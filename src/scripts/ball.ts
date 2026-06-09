@@ -5,49 +5,63 @@ import {
   maxLimitY,
   minLimitX,
   minLimitY,
-  directions,
 } from "../global";
 
 import randSpeed from "../utils/randSpeed";
 import randPos from "../utils/randPos";
+import randDir from "../utils/randDir";
 
-// Ball Direction
-let dx = directions[Math.round(Math.random())];
-let dy = directions[Math.round(Math.random())];
+export default class BallConstructor {
+  private dir: { x: number; y: number };
+  private pos: { x: number; y: number };
+  private speed: { x: number; y: number };
 
-// Random Position
-let posX = randPos("x");
-let posY = randPos("y");
+  constructor() {
+    // Ball Direction
+    this.dir = {
+      x: randDir(),
+      y: randDir(),
+    };
 
-// Random Speed
-let speedX = randSpeed();
-let speedY = randSpeed();
+    // Random Position
+    this.pos = {
+      x: randPos("x"),
+      y: randPos("y"),
+    };
 
-export default function ball() {
-  ballMove();
-  ballDraw();
-}
+    // Random Speed
+    this.speed = {
+      x: randSpeed(),
+      y: randSpeed(),
+    };
+  }
 
-// Move Ball
-function ballMove() {
-  // limit
+  // Update Ball On Canvas
+  public draw() {
+    this.ballMove();
+    this.ballDraw();
+  }
 
-  if (minLimitX >= posX) dx = 1;
-  if (maxLimitX <= posX) dx = -1;
+  // Draw Ball
+  private ballDraw() {
+    ctx.fillStyle = "black";
+    ctx.beginPath();
+    ctx.arc(this.pos.x, this.pos.y, ballSize / 2, 0, Math.PI * 2);
+    ctx.fill();
+  }
 
-  if (minLimitY >= posY) dy = 1;
-  if (maxLimitY <= posY) dy = -1;
+  // Move Ball
+  private ballMove() {
+    // limit
+    if (minLimitX >= this.pos.x) this.dir.x = 1;
+    if (maxLimitX <= this.pos.x) this.dir.x = -1;
 
-  posX += speedX * dx;
-  posY += speedY * dy;
+    if (minLimitY >= this.pos.y) this.dir.y = 1;
+    if (maxLimitY <= this.pos.y) this.dir.y = -1;
 
-  // console.log(posX, posY, speedX, speedY);
-}
+    this.pos.x += this.speed.x * this.dir.x;
+    this.pos.y += this.speed.y * this.dir.y;
 
-// Draw Ball
-function ballDraw() {
-  ctx.fillStyle = "black";
-  ctx.beginPath();
-  ctx.arc(posX, posY, ballSize / 2, 0, Math.PI * 2);
-  ctx.fill();
+    // console.log(posX, posY, speedX, speedY);
+  }
 }
