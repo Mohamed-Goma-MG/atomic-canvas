@@ -1,6 +1,7 @@
 import {
   ballSize,
   ctx,
+  map,
   maxLimitX,
   maxLimitY,
   minLimitX,
@@ -12,11 +13,16 @@ import randPos from "../utils/randPos";
 import randDir from "../utils/randDir";
 
 export default class BallConstructor {
+  private id: number;
   private dir: { x: number; y: number };
   private pos: { x: number; y: number };
   private speed: { x: number; y: number };
 
+  private static counter: number = 0;
+
   constructor() {
+    this.id = BallConstructor.counter;
+
     // Ball Direction
     this.dir = {
       x: randDir(),
@@ -34,11 +40,14 @@ export default class BallConstructor {
       x: randSpeed(),
       y: randSpeed(),
     };
+
+    BallConstructor.counter++;
   }
 
   // Update Ball On Canvas
   public draw() {
     this.ballMove();
+    this.ballMap();
     this.ballDraw();
   }
 
@@ -63,5 +72,10 @@ export default class BallConstructor {
     this.pos.y += this.speed.y * this.dir.y;
 
     // console.log(posX, posY, speedX, speedY);
+  }
+
+  // Ball On Map
+  private ballMap() {
+    map.set(this.id, { pos: this.pos });
   }
 }

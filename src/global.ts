@@ -17,3 +17,5 @@ export const speed = {
   normal: 7,
   max: 6,
 };
+
+export const map = new Map();

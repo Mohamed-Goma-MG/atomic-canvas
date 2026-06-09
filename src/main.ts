@@ -1,11 +1,12 @@
 import canvasBackground from "./scripts/canvasBackground";
-import BallConstructor from "./scripts/ball";
+import ballsManager from "./scripts/ballsManager";
 
-const ball = new BallConstructor();
+const manager = ballsManager();
 
+manager.startup();
 draw();
 function draw() {
   canvasBackground();
-  ball.draw();
+  manager.draw();
   requestAnimationFrame(draw);
 }
