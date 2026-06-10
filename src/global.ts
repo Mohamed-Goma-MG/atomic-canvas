@@ -19,3 +19,4 @@ export const speed = {
 };
 
 export const map = new Map();
+export const distance = 100;
