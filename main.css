@@ -3,3 +3,8 @@ body {
   justify-content: center;
   padding-top: 40px;
 }
+
+canvas {
+  background-color: #eee;
+  border: 2px solid #aaa;
+}
