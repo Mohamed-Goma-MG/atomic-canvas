@@ -1,3 +1,5 @@
+import type { axises } from "../global";
+
 import {
   ballSize,
   ctx,
@@ -14,9 +16,9 @@ import randDir from "../utils/randDir";
 
 export default class BallConstructor {
   private id: number;
-  private dir: { x: number; y: number };
-  private pos: { x: number; y: number };
-  private speed: { x: number; y: number };
+  private dir: axises;
+  private pos: axises;
+  private speed: axises;
 
   private static counter: number = 0;
 

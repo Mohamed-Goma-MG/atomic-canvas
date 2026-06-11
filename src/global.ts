@@ -1,3 +1,4 @@
+// ===== Variables ===== //
 export const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 export const ctx = canvas.getContext("2d")!;
 export const margin = 20;
@@ -18,5 +19,16 @@ export const speed = {
   max: 6,
 };
 
-export const map = new Map();
+export const map = new Map<mapKeyType, mapValueType>();
 export const distance = 100;
+
+// ===== Types ===== //
+export type axises = {
+  x: number;
+  y: number;
+};
+
+export type mapKeyType = number;
+export type mapValueType = {
+  pos: axises;
+};
