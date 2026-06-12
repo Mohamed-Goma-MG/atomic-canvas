@@ -10,8 +10,8 @@ function draw() {
   // clear screen
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  manager.draw();
   mapTracker();
+  manager.draw();
 
   requestAnimationFrame(draw);
 }
