@@ -9,8 +9,8 @@ export default function mapTracker() {
     map.forEach((ball) => {
       const { pos: pos2 } = ball;
       const diffDistance = distanceBetween(pos1, pos2);
-      if (diffDistance <= distance) {
-        drawLine(pos1, pos2);
+      if (diffDistance <= distance.max) {
+        drawLine(pos1, pos2, diffDistance);
       }
     });
   });
@@ -22,7 +22,10 @@ function distanceBetween(pos1: axises, pos2: axises): number {
   return Math.sqrt(Math.pow(axisX, 2) + Math.pow(axisY, 2));
 }
 
-function drawLine(pos1: axises, pos2: axises) {
+function drawLine(pos1: axises, pos2: axises, diffDistance: number) {
+  const nearByPerc =
+    diffDistance <= distance.min ? 0 : diffDistance / distance.max;
+  ctx.strokeStyle = `rgb(68 68 68 / ${1 - nearByPerc})`;
   ctx.beginPath();
   ctx.moveTo(pos1.x, pos1.y);
   ctx.lineTo(pos2.x, pos2.y);

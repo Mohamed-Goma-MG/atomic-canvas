@@ -3,8 +3,8 @@ export const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 export const ctx = canvas.getContext("2d")!;
 export const margin = 20;
 
-export const ballsNumber = 10;
-export const ballSize = 10;
+export const ballsNumber = 150;
+export const ballSize = 7;
 export const ballRadius = ballSize / 2;
 
 export const minLimitX = ballRadius;
@@ -14,13 +14,16 @@ export const minLimitY = ballRadius;
 export const maxLimitY = canvas.height - ballRadius;
 
 export const speed = {
-  min: 1,
+  min: 0.1,
   normal: 1,
-  max: 3,
+  max: 1,
 };
 
 export const map = new Map<mapKeyType, mapValueType>();
-export const distance = 100;
+export const distance = {
+  min: 10,
+  max: 150,
+};
 
 // ===== Types ===== //
 export type axises = {
