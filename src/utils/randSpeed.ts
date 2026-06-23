@@ -1,7 +1,7 @@
-import { speed } from "../global";
+import { minSpeed, maxSpeed } from "../global";
 
 export default function randSpeed() {
-  const randSpeed = Math.ceil(Math.random() * speed.max);
+  const randSpeed = Math.ceil(Math.random() * maxSpeed);
 
-  return randSpeed > speed.min ? randSpeed : speed.min;
+  return randSpeed > minSpeed ? randSpeed : minSpeed;
 }

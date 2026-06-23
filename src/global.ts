@@ -13,25 +13,26 @@ export const maxLimitX = canvas.width - ballRadius;
 export const minLimitY = ballRadius;
 export const maxLimitY = canvas.height - ballRadius;
 
-export const speed = {
-  min: 0.1,
-  normal: 1,
-  max: 1,
-};
+export const minSpeed = 0.1;
+export const maxSpeed = 1;
 
-export const map = new Map<mapKeyType, mapValueType>();
-export const distance = {
-  min: 10,
-  max: 150,
-};
+export const maxDistance = 150;
+export const minDistance = 10;
+
+export const map: ballProps[] = [];
 
 // ===== Types ===== //
-export type axises = {
-  x: number;
-  y: number;
+export type axises<T> = {
+  x: T;
+  y: T;
 };
 
-export type mapKeyType = number;
-export type mapValueType = {
-  pos: axises;
+export type pos = axises<number>;
+
+export type direction = 1 | -1;
+
+export type ballProps = {
+  pos: pos;
+  dir: axises<direction>;
+  speed: axises<number>;
 };

@@ -2,16 +2,24 @@ import { canvas, ctx } from "./global";
 import ballsManager from "./scripts/ballsManager";
 import mapTracker from "./scripts/mapTracker";
 
-const manager = ballsManager();
+// fillStyle: Temporary Here Till Adding Control Feature Of Color
+ctx.fillStyle = "black";
 
-manager.startup();
-draw();
-function draw() {
+ballsManager.startup();
+const ballsCalc = ballsManager.calc;
+const mapTrackerCalc = mapTracker.calc;
+const ballsDraw = ballsManager.draw;
+const mapTrackerDraw = mapTracker.draw;
+
+canvasDraw();
+function canvasDraw() {
   // clear screen
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  mapTracker();
-  manager.draw();
+  ballsCalc();
+  mapTrackerCalc();
+  ballsDraw();
+  mapTrackerDraw();
 
-  requestAnimationFrame(draw);
+  requestAnimationFrame(canvasDraw);
 }
