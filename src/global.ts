@@ -4,7 +4,7 @@ export const ctx = canvas.getContext("2d")!;
 export const margin = 20;
 
 export const ballsNumber = 150;
-export const ballSize = 10;
+export const ballSize = 6;
 export const ballRadius = ballSize / 2;
 
 export const minLimitX = ballRadius;
