@@ -1,6 +1,5 @@
 import { ballsNumber } from "../global";
 import BallConstructor from "./ball";
-("./ball");
 
 export default function ballsManager() {
   const balls = new Set<{ draw: () => void }>();
