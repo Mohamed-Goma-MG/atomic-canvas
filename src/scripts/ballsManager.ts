@@ -38,20 +38,18 @@ const ballsManager = {
     }
   },
 
-  calc() {
+  calc(id: number) {
     // Move Ball
-    for (let id = 0; id < ballsNumber; id++) {
-      const ball = map[id];
+    const ball = map[id];
 
-      if (minLimitX >= ball.pos.x) ball.dir.x = 1;
-      if (maxLimitX <= ball.pos.x) ball.dir.x = -1;
+    if (minLimitX >= ball.pos.x) ball.dir.x = 1;
+    if (maxLimitX <= ball.pos.x) ball.dir.x = -1;
 
-      if (minLimitY >= ball.pos.y) ball.dir.y = 1;
-      if (maxLimitY <= ball.pos.y) ball.dir.y = -1;
+    if (minLimitY >= ball.pos.y) ball.dir.y = 1;
+    if (maxLimitY <= ball.pos.y) ball.dir.y = -1;
 
-      ball.pos.x += ball.speed.x * ball.dir.x;
-      ball.pos.y += ball.speed.y * ball.dir.y;
-    }
+    ball.pos.x += ball.speed.x * ball.dir.x;
+    ball.pos.y += ball.speed.y * ball.dir.y;
   },
 
   // Draw Ball
