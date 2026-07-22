@@ -50,7 +50,7 @@ const mapTracker = {
 };
 
 function distanceBetween(pos1: pos, pos2: pos): number {
-  return Math.sqrt(Math.pow(pos2.x - pos1.x, 2) + Math.pow(pos2.y - pos1.y, 2));
+  return Math.sqrt((pos2.x - pos1.x) ** 2 + (pos2.y - pos1.y) ** 2);
 }
 
 export default mapTracker;
