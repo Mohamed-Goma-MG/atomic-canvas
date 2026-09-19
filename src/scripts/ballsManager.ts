@@ -1,6 +1,7 @@
 import randSpeed from "../utils/randSpeed";
 import randPos from "../utils/randPos";
 import randDir from "../utils/randDir";
+import { mkCircle, radius } from "../precalc";
 
 import {
   ballSize,
@@ -59,7 +60,7 @@ const ballsManager = {
     for (let id = 0; id < ballsNumber; id++) {
       var { x, y } = map[id].pos;
       ctx.moveTo(x, y);
-      ctx.arc(x, y, ballSize / 2, 0, Math.PI * 2);
+      ctx.arc(x, y, radius, 0, mkCircle);
     }
 
     ctx.fill();
