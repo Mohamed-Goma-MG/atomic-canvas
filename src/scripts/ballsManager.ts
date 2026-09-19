@@ -57,9 +57,9 @@ const ballsManager = {
     ctx.beginPath();
 
     for (let id = 0; id < ballsNumber; id++) {
-      const ball = map[id];
-      ctx.moveTo(ball.pos.x, ball.pos.y);
-      ctx.arc(ball.pos.x, ball.pos.y, ballSize / 2, 0, Math.PI * 2);
+      var { x, y } = map[id].pos;
+      ctx.moveTo(x, y);
+      ctx.arc(x, y, ballSize / 2, 0, Math.PI * 2);
     }
 
     ctx.fill();
